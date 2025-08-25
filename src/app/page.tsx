@@ -1068,13 +1068,69 @@ const EntregadoresApp: React.FC = () => {
         </div>
       )}
       
-      <div className="bg-gray-100 h-48 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-        <MapIcon className="w-12 h-12 text-gray-400" />
-
-        <button className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md">
-          <Navigation className="w-5 h-5 text-blue-600" />
-        </button>
+      <div className="bg-white border border-gray-200 rounded-xl mb-4 relative overflow-hidden h-48">
+  {/* Mapa simplificado e mais visível */}
+  <div className="w-full h-full bg-blue-200 flex items-center justify-center relative">
+    {/* Fundo do mapa com padrão */}
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-300 to-green-200"></div>
+    
+    {/* Grade do mapa */}
+    <div className="absolute inset-0 opacity-30">
+      <div className="absolute w-full border-t border-gray-500" style={{top: '25%'}}></div>
+      <div className="absolute w-full border-t border-gray-500" style={{top: '50%'}}></div>
+      <div className="absolute w-full border-t border-gray-500" style={{top: '75%'}}></div>
+      <div className="absolute h-full border-l border-gray-500" style={{left: '25%'}}></div>
+      <div className="absolute h-full border-l border-gray-500" style={{left: '50%'}}></div>
+      <div className="absolute h-full border-l border-gray-500" style={{left: '75%'}}></div>
+    </div>
+    
+    {/* Ilhas simuladas */}
+    <div className="absolute w-12 h-8 bg-green-400 rounded opacity-70" style={{left: '20%', top: '25%'}}></div>
+    <div className="absolute w-16 h-10 bg-green-500 rounded opacity-70" style={{left: '55%', top: '45%'}}></div>
+    <div className="absolute w-10 h-6 bg-green-400 rounded opacity-70" style={{left: '35%', top: '70%'}}></div>
+    
+    {/* Pontos de apoio */}
+    <div className="absolute inset-4 z-10">
+      {supportPoints.slice(0, 3).map((point, index) => (
+        <div
+          key={point.id}
+          className={`absolute w-4 h-4 rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform ${
+            point.available ? 'bg-green-500' : 'bg-red-500'
+          }`}
+          style={{
+            left: `${20 + index * 25}%`,
+            top: `${30 + index * 15}%`
+          }}
+          title={point.name}
+        ></div>
+      ))}
+      
+      {/* Sua localização */}
+      <div 
+        className="absolute w-5 h-5 bg-blue-600 rounded-full border-2 border-white shadow-lg z-20"
+        style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+        title="Sua localização"
+      >
+        <div className="w-full h-full bg-blue-500 rounded-full animate-pulse"></div>
       </div>
+    </div>
+    
+    {/* Label da cidade */}
+    <div className="absolute top-2 left-2 bg-white px-2 py-1 rounded text-sm font-bold text-gray-800 shadow-md z-10">
+      📍 Ilhabela - SP
+    </div>
+    
+    {/* Zoom indicator */}
+    <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded text-xs text-gray-600 shadow z-10">
+      Zoom: 12
+    </div>
+  </div>
+  
+  {/* Botão de navegação */}
+  <button className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 p-2 rounded-full shadow-lg text-white transition-colors">
+    <Navigation className="w-5 h-5" />
+  </button>
+</div>
       
       <h2 className="text-xl font-bold text-gray-800">Pontos de Apoio Próximos</h2>
       
