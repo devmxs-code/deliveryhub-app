@@ -644,12 +644,12 @@ const EntregadoresApp: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                     <input
                       type="email"
                       value={loginData.email}
                       onChange={(e) => setLoginData({...loginData, email: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       placeholder="seu@email.com"
                       required
                     />
@@ -662,7 +662,7 @@ const EntregadoresApp: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-3 text-gray-600 hover:text-gray-800"
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -670,7 +670,7 @@ const EntregadoresApp: React.FC = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={loginData.password}
                       onChange={(e) => setLoginData({...loginData, password: e.target.value})}
-                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       placeholder="••••••••"
                       required
                     />
@@ -701,12 +701,12 @@ const EntregadoresApp: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <User className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                     <input
                       type="text"
                       value={registerData.name}
                       onChange={(e) => setRegisterData({...registerData, name: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       placeholder="Seu nome completo"
                       required
                     />
@@ -716,12 +716,12 @@ const EntregadoresApp: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                     <input
                       type="email"
                       value={registerData.email}
                       onChange={(e) => setRegisterData({...registerData, email: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       placeholder="seu@email.com"
                       required
                     />
@@ -732,12 +732,12 @@ const EntregadoresApp: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                      <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                       <input
                         type="tel"
                         value={registerData.phone}
                         onChange={(e) => setRegisterData({...registerData, phone: e.target.value})}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                         placeholder="(11) 99999-9999"
                         required
                       />
@@ -747,12 +747,12 @@ const EntregadoresApp: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">CPF</label>
                     <div className="relative">
-                      <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                      <User className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                       <input
                         type="text"
                         value={registerData.cpf}
                         onChange={(e) => setRegisterData({...registerData, cpf: e.target.value})}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                         placeholder="000.000.000-00"
                         required
                       />
@@ -763,12 +763,12 @@ const EntregadoresApp: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Data de Nascimento</label>
                   <div className="relative">
-                    <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                     <input
                       type="date"
                       value={registerData.birthDate}
                       onChange={(e) => setRegisterData({...registerData, birthDate: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       required
                     />
                   </div>
@@ -777,11 +777,11 @@ const EntregadoresApp: React.FC = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Veículo</label>
                   <div className="relative">
-                    <Car className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                    <Car className="absolute left-3 top-3 w-5 h-5 text-gray-600" />
                     <select
                       value={registerData.vehicle}
                       onChange={(e) => setRegisterData({...registerData, vehicle: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                     >
                       <option value="moto">Moto</option>
                       <option value="bicicleta">Bicicleta</option>
@@ -797,7 +797,7 @@ const EntregadoresApp: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-3 text-gray-600 hover:text-gray-800"
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
@@ -805,12 +805,12 @@ const EntregadoresApp: React.FC = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={registerData.password}
                       onChange={(e) => setRegisterData({...registerData, password: e.target.value})}
-                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
                       placeholder="••••••••"
                       required
                     />
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">Mínimo de 8 caracteres</p>
+                  <p className="text-xs text-gray-600 mt-1">Mínimo de 8 caracteres</p>
                 </div>
 
                 <div className="flex items-center">
@@ -846,8 +846,8 @@ const EntregadoresApp: React.FC = () => {
     <div className="space-y-6">
       {/* Header com saudação */}
       <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-2xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-10 rounded-full translate-y-12 -translate-x-12"></div>
+  
+
         
         <div className="relative z-10">
           <div className="flex items-center justify-between">
