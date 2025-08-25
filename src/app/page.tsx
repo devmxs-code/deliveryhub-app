@@ -51,6 +51,7 @@ import {
 } from 'lucide-react';
 
 // Interfaces TypeScript
+// Interfaces TypeScript
 interface Weather {
   temperature: number;
   condition: string;
@@ -70,15 +71,16 @@ interface WeatherWidgetProps {
 }
 
 interface User {
-  id: string;
   name: string;
   email: string;
   phone: string;
   vehicle: string;
-  cpf: string;
-  birthDate: string;
-  credits: number;
+  memberSince: string;
+  level: string;
+  nextLevel: string;
+  pointsToNextLevel: number;
   points: number;
+  credits: number;
 }
 
 interface LoginData {
@@ -97,8 +99,8 @@ interface RegisterData {
 }
 
 interface Location {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 }
 
 interface SupportPoint {
@@ -106,29 +108,32 @@ interface SupportPoint {
   name: string;
   address: string;
   distance: string;
-  rating: number;
-  services: string[];
-  amenities: string[];
-  hours: string;
-  phone: string;
   coordinates: {
     lat: number;
     lng: number;
   };
-  priceRange: string;
-  description: string;
+  services: string[];
+  available: boolean;
+  waitTime: number;
+  rating: number;
+  totalReviews: number;
+  openingHours: string;
+  phone: string;
   images: string[];
-  reviews: {
-    user: string;
-    rating: number;
-    comment: string;
-    date: string;
-  }[];
+  amenities: {
+    showers: number;
+    parking: boolean;
+    restrooms: boolean;
+    charging: boolean;
+    lounge: boolean;
+    cafe?: boolean;
+  };
 }
 
 interface BathBooking {
   date: string;
   time: string;
+  service: string;
 }
 
 interface Notification {
@@ -142,6 +147,8 @@ interface Notification {
 
 interface Booking {
   id: string;
+  pointId: number;
+  pointName: string;
   service: string;
   date: string;
   time: string;
@@ -155,12 +162,29 @@ interface DeliveryStats {
   earnings: number;
   rating: number;
   efficiency: number;
+  today: number;
+  week: number;
+  month: number;
 }
 
-interface Toast {
+interface ToastState {
   message: string;
   type: 'success' | 'error';
 }
+
+type ServiceIconKey = 'banho' | 'wifi' | 'agua' | 'protetor' | 'capa' | 'massagem' | 'microondas' | 'eletricidade' | 'lanche';
+
+const serviceIcons: Record<ServiceIconKey, React.ReactElement> = {
+  banho: <Droplets className="w-4 h-4" />,
+  wifi: <Wifi className="w-4 h-4" />,
+  agua: <Coffee className="w-4 h-4" />,
+  protetor: <Shield className="w-4 h-4" />,
+  capa: <Umbrella className="w-4 h-4" />,
+  massagem: <Zap className="w-4 h-4" />,
+  microondas: <Coffee className="w-4 h-4" />,
+  eletricidade: <BatteryCharging className="w-4 h-4" />,
+  lanche: <Gift className="w-4 h-4" />
+};
 
 // Componentes auxiliares
 const LoadingSpinner: React.FC = () => (
@@ -169,7 +193,7 @@ const LoadingSpinner: React.FC = () => (
   </div>
 );
 
-const Toast: React.FC<ToastProps> = ({ message, type = 'success', onClose }) => {
+const ToastComponent: React.FC<ToastProps> = ({ message, type = 'success', onClose }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
@@ -179,7 +203,7 @@ const Toast: React.FC<ToastProps> = ({ message, type = 'success', onClose }) => 
 
   return (
     <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg flex items-center space-x-2 ${
-      type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+      type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
     }`}>
       {type === 'success' ? (
         <CheckCircle className="w-5 h-5" />
@@ -200,34 +224,38 @@ const Toast: React.FC<ToastProps> = ({ message, type = 'success', onClose }) => 
 };
 
 const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather }) => {
-  if (!weather) return <LoadingSpinner />;
-  
-  const getWeatherIcon = () => {
-    if (weather.condition.includes('rain')) return <CloudRain className="w-6 h-6 text-blue-500" />;
-    if (weather.condition.includes('cloud')) return <Cloud className="w-6 h-6 text-gray-500" />;
-    return <Sun className="w-6 h-6 text-yellow-500" />;
+  if (!weather) return null;
+
+  const getWeatherIcon = (condition: string) => {
+    if (condition.includes('sol') || condition.includes('limpo')) {
+      return <Sun className="w-6 h-6 text-yellow-500" />;
+    } else if (condition.includes('chuva')) {
+      return <CloudRain className="w-6 h-6 text-blue-500" />;
+    } else {
+      return <Cloud className="w-6 h-6 text-gray-500" />;
+    }
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-400 to-blue-600 text-white p-4 rounded-xl">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center space-x-2">
-          {getWeatherIcon()}
-          <span className="font-semibold">{weather.temperature}°C</span>
+    <div className="bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl p-4 text-white">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="flex items-center space-x-2">
+            {getWeatherIcon(weather.condition)}
+            <span className="text-2xl font-bold">{weather.temperature}°C</span>
+          </div>
+          <p className="text-sm opacity-90">{weather.condition}</p>
+          <p className="text-xs opacity-75">Sensação: {weather.feelsLike}°C</p>
         </div>
-        <div className="text-right">
-          <p className="text-sm">{weather.condition}</p>
-          <p className="text-xs">Umidade: {weather.humidity}%</p>
-        </div>
-      </div>
-      <div className="flex justify-between text-xs">
-        <div className="flex items-center">
-          <Wind className="w-3 h-3 mr-1" />
-          <span>{weather.windSpeed} km/h</span>
-        </div>
-        <div className="flex items-center">
-          <Thermometer className="w-3 h-3 mr-1" />
-          <span>Sensação: {weather.feelsLike}°C</span>
+        <div className="text-right text-sm">
+          <div className="flex items-center space-x-1">
+            <Droplets className="w-4 h-4" />
+            <span>{weather.humidity}%</span>
+          </div>
+          <div className="flex items-center space-x-1 mt-1">
+            <Wind className="w-4 h-4" />
+            <span>{weather.windSpeed} km/h</span>
+          </div>
         </div>
       </div>
     </div>
@@ -250,7 +278,7 @@ const EntregadoresApp: React.FC = () => {
     birthDate: ''
   });
   const [isLogin, setIsLogin] = useState<boolean>(true);
-  const [toast, setToast] = useState<Toast | null>(null);
+  const [toast, setToast] = useState<ToastState | null>(null);
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [weather, setWeather] = useState<Weather | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -259,7 +287,7 @@ const EntregadoresApp: React.FC = () => {
 
   // Estados para funcionalidades
   const [selectedSupport, setSupportPoint] = useState<SupportPoint | null>(null);
-  const [bathBooking, setBathBooking] = useState<BathBooking>({ date: '', time: '' });
+  const [bathBooking, setBathBooking] = useState<BathBooking>({ date: '', time: '', service: 'banho' });
   const [userCredits, setUserCredits] = useState<number>(3);
   const [userPoints, setUserPoints] = useState<number>(1250);
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -269,14 +297,17 @@ const EntregadoresApp: React.FC = () => {
     completedToday: 0,
     earnings: 0,
     rating: 0,
+    today: 0,
+    week: 0,
+    month: 0,
     efficiency: 0
   });
 
   // Referência para mapa (simulado)
-  const mapRef = useRef(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   // Mock data melhorada
-  const supportPoints = [
+  const supportPoints: SupportPoint[] = [
     {
       id: 1,
       name: 'Ponto Centro',
@@ -368,7 +399,7 @@ const EntregadoresApp: React.FC = () => {
     }
   ];
 
-  const serviceIcons = {
+  const serviceIcons: Record<ServiceIconKey, React.ReactElement> = {
     banho: <Droplets className="w-4 h-4" />,
     wifi: <Wifi className="w-4 h-4" />,
     agua: <Coffee className="w-4 h-4" />,
@@ -397,48 +428,34 @@ const EntregadoresApp: React.FC = () => {
       // Carregar notificações
       setNotifications([
         {
-          id: 1,
-          type: 'promo',
-          title: 'Promoção Especial! 🎉',
-          message: 'Massagem grátis no Ponto Centro hoje até às 18h. Não perca!',
-          time: '2 horas atrás',
+          id: '1',
+          title: 'Novo ponto disponível',
+          message: 'Ponto Premium Pinheiros agora está disponível!',
+          type: 'info',
+          timestamp: new Date().toISOString(),
           read: false
-        },
-        {
-          id: 2,
-          type: 'points',
-          title: 'Pontos Ganhos!',
-          message: 'Você ganhou 25 pontos pela entrega com avaliação 5 estrelas!',
-          time: '4 horas atrás',
-          read: true
-        },
-        {
-          id: 3,
-          type: 'reminder',
-          title: 'Lembrete de Créditos',
-          message: 'Você tem 3 créditos de protetor solar para usar este mês!',
-          time: 'Ontem',
-          read: true
         }
       ]);
       
       // Carregar reservas
       setBookings([
         {
-          id: 1,
+          id: '1',
           pointId: 1,
           pointName: 'Ponto Centro',
           service: 'banho',
           date: '2023-12-15',
+          location: 'Rua das Flores, 123 - Centro',
           time: '14:00',
           status: 'confirmed'
         },
         {
-          id: 2,
+          id: '2',
           pointId: 4,
           pointName: 'Ponto Pinheiros Premium',
           service: 'massagem',
           date: '2023-12-16',
+          location: 'Rua Cardeal Arcoverde, 1254 - Pinheiros',
           time: '16:30',
           status: 'pending'
         }
@@ -459,11 +476,11 @@ const EntregadoresApp: React.FC = () => {
     return matchesSearch && matchesService;
   });
 
-  const showToast = (message, type = 'success') => {
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
     setToast({ message, type });
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -499,7 +516,7 @@ const EntregadoresApp: React.FC = () => {
     }
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -533,36 +550,37 @@ const EntregadoresApp: React.FC = () => {
     }
   };
 
-  const openWaze = (point) => {
+  const openWaze = (point: SupportPoint) => {
     const wazeUrl = `https://waze.com/ul?ll=${point.coordinates.lat},${point.coordinates.lng}&navigate=yes`;
     window.open(wazeUrl, '_blank');
   };
 
-  const openGoogleMaps = (point) => {
+  const openGoogleMaps = (point: SupportPoint) => {
     const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${point.coordinates.lat},${point.coordinates.lng}`;
     window.open(mapsUrl, '_blank');
   };
 
   const bookBath = () => {
     if (bathBooking.date && bathBooking.time && selectedSupport) {
-      const newBooking = {
-        id: Date.now(),
+      const newBooking: Booking = {
+        id: Date.now().toString(),
         pointId: selectedSupport.id,
         pointName: selectedSupport.name,
         service: 'banho',
         date: bathBooking.date,
         time: bathBooking.time,
+        location: selectedSupport.address,
         status: 'confirmed'
       };
       
       setBookings([...bookings, newBooking]);
-      setBathBooking({ date: '', time: '' });
+      setBathBooking({ date: '', time: '', service: 'banho' });
       setSupportPoint(null);
       showToast('Banho agendado com sucesso!', 'success');
     }
   };
 
-  const cancelBooking = (bookingId) => {
+  const cancelBooking = (bookingId: string) => {
     setBookings(bookings.filter(booking => booking.id !== bookingId));
     showToast('Reserva cancelada com sucesso!', 'success');
   };
@@ -580,7 +598,7 @@ const EntregadoresApp: React.FC = () => {
     showToast('Capa de chuva liberada! Código: #CHUVA123. Retire no ponto selecionado.', 'success');
   };
 
-  const markNotificationAsRead = (id) => {
+  const markNotificationAsRead = (id: string) => {
     setNotifications(notifications.map(notification => 
       notification.id === id ? { ...notification, read: true } : notification
     ));
@@ -590,7 +608,7 @@ const EntregadoresApp: React.FC = () => {
   if (!currentUser) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
-        {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+        {toast && <ToastComponent message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
         
         <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
           <div className="bg-gradient-to-r from-blue-400 to-purple-500 p-6 text-white text-center">
@@ -975,7 +993,7 @@ const EntregadoresApp: React.FC = () => {
         <button 
           onClick={() => {
             const point = supportPoints.find(p => p.id === 1);
-            setSupportPoint(point);
+            setSupportPoint(point as SupportPoint);
             setActiveTab('map');
           }}
           className="bg-white text-orange-500 px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-100 transition-colors"
@@ -1026,6 +1044,8 @@ const EntregadoresApp: React.FC = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            aria-label="Buscar pontos de apoio"
+            title="Digite para buscar pontos de apoio"
           />
         </div>
         <button 
@@ -1128,7 +1148,7 @@ const EntregadoresApp: React.FC = () => {
                   className="flex items-center space-x-1 bg-gray-100 px-2 py-1 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors"
                   onClick={() => setServiceFilter(service)}
                 >
-                  {serviceIcons[service]}
+                  {serviceIcons[service as ServiceIconKey]}
                   <span className="text-xs text-gray-700 capitalize">{service}</span>
                 </div>
               ))}
@@ -1205,9 +1225,11 @@ const EntregadoresApp: React.FC = () => {
                 <p className="text-green-700 text-sm">{selectedSupport.address}</p>
               </div>
               <button
-                onClick={() => setSupportPoint(null)}
-                className="text-green-600 hover:text-green-800"
-              >
+          onClick={() => setSupportPoint(null)}
+          className="text-green-600 hover:text-green-800"
+          aria-label="Fechar detalhes do ponto"
+          title="Fechar detalhes"
+        >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -1227,7 +1249,7 @@ const EntregadoresApp: React.FC = () => {
                   onClick={() => setBathBooking({...bathBooking, service})}
                 >
                   <div className="text-blue-600">
-                    {serviceIcons[service]}
+                    {serviceIcons[service as ServiceIconKey]}
                   </div>
                   <span className="text-xs font-medium text-gray-700 capitalize">{service}</span>
                 </button>
@@ -1525,7 +1547,7 @@ const EntregadoresApp: React.FC = () => {
           <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
             <Award className="w-6 h-6 text-blue-600" />
           </div>
-          <p className="text-2xl font-bold text-gray-800">{deliveryStats.month}</p>
+          <p className="text-2xl font-bold text-gray-800">{deliveryStats.totalDeliveries}</p>
           <p className="text-sm text-gray-600">Entregas este mês</p>
         </div>
         
@@ -1541,7 +1563,7 @@ const EntregadoresApp: React.FC = () => {
           <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
             <TrendingUp className="w-6 h-6 text-purple-600" />
           </div>
-          <p className="text-2xl font-bold text-gray-800">{deliveryStats.week}</p>
+          <p className="text-2xl font-bold text-gray-800">{deliveryStats.totalDeliveries}</p>
           <p className="text-sm text-gray-600">Entregas esta semana</p>
         </div>
         
@@ -1741,7 +1763,7 @@ const EntregadoresApp: React.FC = () => {
                 <p className={`text-xs mt-2 ${
                   notification.read ? 'text-gray-500' : 'text-blue-600'
                 }`}>
-                  {notification.time}
+                  {notification.timestamp}
                 </p>
               </div>
               {!notification.read && (
@@ -1810,7 +1832,7 @@ const EntregadoresApp: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto bg-gray-50 min-h-screen">
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      {toast && <ToastComponent message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       
       {/* Conteúdo principal */}
       <main className="pb-20 px-4 pt-4">
