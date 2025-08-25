@@ -237,7 +237,7 @@ const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather }) => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl p-4 text-white">
+    <div className="bg-gradient-to-r from-blue-400 to-blue-300 rounded-xl p-4 text-white">
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center space-x-2">
@@ -310,17 +310,17 @@ const EntregadoresApp: React.FC = () => {
   const supportPoints: SupportPoint[] = [
     {
       id: 1,
-      name: 'Ponto Centro',
-      address: 'Rua das Flores, 123 - Centro',
-      distance: '0.8 km',
-      coordinates: { lat: -23.5505, lng: -46.6333 },
-      services: ['banho', 'wifi', 'agua', 'protetor', 'capa', 'massagem', 'eletricidade'],
-      available: true,
-      waitTime: 5,
-      rating: 4.8,
-      totalReviews: 124,
-      openingHours: '06:00 - 22:00',
-      phone: '(11) 3456-7890',
+      name: 'Ponto Vila',
+    address: 'Av. Princesa Isabel, 123 - Vila',
+    distance: '0.8 km',
+    coordinates: { lat: -23.7781, lng: -45.3581 },
+    services: ['banho', 'wifi', 'agua', 'protetor', 'capa', 'massagem', 'eletricidade'],
+    available: true,
+    waitTime: 5,
+    rating: 4.8,
+    totalReviews: 124,
+    openingHours: '06:00 - 22:00',
+    phone: '(12) 3896-1234',
       images: ['https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
       amenities: {
         showers: 4,
@@ -332,17 +332,17 @@ const EntregadoresApp: React.FC = () => {
     },
     {
       id: 2,
-      name: 'Ponto Vila Madalena',
-      address: 'Av. Paulista, 456 - Vila Madalena',
-      distance: '1.2 km',
-      coordinates: { lat: -23.5616, lng: -46.6560 },
-      services: ['banho', 'wifi', 'agua', 'protetor', 'microondas', 'eletricidade'],
-      available: true,
-      waitTime: 12,
-      rating: 4.5,
-      totalReviews: 87,
-      openingHours: '07:00 - 23:00',
-      phone: '(11) 3345-6789',
+      name: 'Ponto Perequê',
+    address: 'Av. Pedro Paula de Moraes, 456 - Perequê',
+    distance: '1.2 km',
+    coordinates: { lat: -23.7892, lng: -45.3642 },
+    services: ['banho', 'wifi', 'agua', 'protetor', 'microondas', 'eletricidade'],
+    available: true,
+    waitTime: 12,
+    rating: 4.5,
+    totalReviews: 87,
+    openingHours: '07:00 - 23:00',
+    phone: '(12) 3896-5678',
       images: ['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
       amenities: {
         showers: 3,
@@ -354,17 +354,17 @@ const EntregadoresApp: React.FC = () => {
     },
     {
       id: 3,
-      name: 'Ponto Ipiranga',
-      address: 'Rua do Comércio, 789 - Ipiranga',
-      distance: '2.1 km',
-      coordinates: { lat: -23.5898, lng: -46.6109 },
-      services: ['banho', 'wifi', 'agua', 'capa', 'massagem', 'eletricidade'],
-      available: false,
-      waitTime: 0,
-      rating: 4.2,
-      totalReviews: 56,
-      openingHours: '08:00 - 20:00',
-      phone: '(11) 3567-8901',
+      name: 'Ponto Barra Velha',
+    address: 'Estrada da Barra Velha, 789 - Barra Velha',
+    distance: '2.1 km',
+    coordinates: { lat: -23.8123, lng: -45.3789 },
+    services: ['banho', 'wifi', 'agua', 'capa', 'massagem', 'eletricidade'],
+    available: false,
+    waitTime: 0,
+    rating: 4.2,
+    totalReviews: 56,
+    openingHours: '08:00 - 20:00',
+    phone: '(12) 3896-9012',
       images: ['https://images.unsplash.com/photo-1584132967330-4f1bbf39ccf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
       amenities: {
         showers: 2,
@@ -376,17 +376,17 @@ const EntregadoresApp: React.FC = () => {
     },
     {
       id: 4,
-      name: 'Ponto Pinheiros Premium',
-      address: 'Rua Cardeal Arcoverde, 1254 - Pinheiros',
-      distance: '0.5 km',
-      coordinates: { lat: -23.5679, lng: -46.6928 },
-      services: ['banho', 'wifi', 'agua', 'protetor', 'capa', 'massagem', 'microondas', 'eletricidade', 'lanche'],
-      available: true,
-      waitTime: 3,
-      rating: 4.9,
-      totalReviews: 203,
-      openingHours: '24 horas',
-      phone: '(11) 3789-0123',
+      name: 'Ponto Praia Grande Premium',
+    address: 'Av. Força Expedicionária Brasileira, 1254 - Praia Grande',
+    distance: '0.5 km',
+    coordinates: { lat: -23.7654, lng: -45.3456 },
+    services: ['banho', 'wifi', 'agua', 'protetor', 'capa', 'massagem', 'microondas', 'eletricidade', 'lanche'],
+    available: true,
+    waitTime: 3,
+    rating: 4.9,
+    totalReviews: 203,
+    openingHours: '24 horas',
+    phone: '(12) 3896-3456',
       images: ['https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'],
       amenities: {
         showers: 6,
@@ -430,7 +430,7 @@ const EntregadoresApp: React.FC = () => {
         {
           id: '1',
           title: 'Novo ponto disponível',
-          message: 'Ponto Premium Pinheiros agora está disponível!',
+          message: 'Ponto Praia Grande Premium agora está disponível!',
           type: 'info',
           timestamp: new Date().toISOString(),
           read: false
@@ -442,20 +442,20 @@ const EntregadoresApp: React.FC = () => {
         {
           id: '1',
           pointId: 1,
-          pointName: 'Ponto Centro',
+          pointName: 'Ponto Vila',
           service: 'banho',
           date: '2023-12-15',
-          location: 'Rua das Flores, 123 - Centro',
+          location: 'Av. Princesa Isabel, 123 - Vila',
           time: '14:00',
           status: 'confirmed'
         },
         {
           id: '2',
           pointId: 4,
-          pointName: 'Ponto Pinheiros Premium',
+          pointName: 'Ponto Praia Grande Premium',
           service: 'massagem',
           date: '2023-12-16',
-          location: 'Rua Cardeal Arcoverde, 1254 - Pinheiros',
+          location: 'Av. Força Expedicionária Brasileira, 1254 - Praia Grande',
           time: '16:30',
           status: 'pending'
         }
@@ -607,12 +607,12 @@ const EntregadoresApp: React.FC = () => {
   // Tela de login/cadastro
   if (!currentUser) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center p-4">
         {toast && <ToastComponent message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
         
         <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-400 to-purple-500 p-6 text-white text-center">
-            <div className="bg-white bg-opacity-20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-blue-400 p-6 text-white text-center">
+            <div className="bg-gradient-to-br from-white/30 to-white/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/20">
               <MapPin className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-3xl font-bold mb-2">DeliveryHub</h1>
@@ -845,7 +845,7 @@ const EntregadoresApp: React.FC = () => {
   const renderHome = () => (
     <div className="space-y-6">
       {/* Header com saudação */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-2xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white p-6 rounded-2xl relative overflow-hidden">
   
 
         
@@ -989,7 +989,7 @@ const EntregadoresApp: React.FC = () => {
           <Gift className="w-5 h-5" />
           <span className="font-semibold">Promoção do Dia</span>
         </div>
-        <p className="mb-3">Massagem grátis no Ponto Centro! Válida até às 18h</p>
+        <p className="mb-3">Massagem grátis no Ponto Vila! Válida até às 18h</p>
         <button 
           onClick={() => {
             const point = supportPoints.find(p => p.id === 1);
@@ -1043,7 +1043,7 @@ const EntregadoresApp: React.FC = () => {
             placeholder="Buscar pontos de apoio..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
             aria-label="Buscar pontos de apoio"
             title="Digite para buscar pontos de apoio"
           />
@@ -1070,7 +1070,7 @@ const EntregadoresApp: React.FC = () => {
       
       <div className="bg-gray-100 h-48 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
         <MapIcon className="w-12 h-12 text-gray-400" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-transparent"></div>
+
         <button className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md">
           <Navigation className="w-5 h-5 text-blue-600" />
         </button>
@@ -1337,8 +1337,6 @@ const EntregadoresApp: React.FC = () => {
   const renderRewards = () => (
     <div className="space-y-4">
       <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-2xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-10 rounded-full translate-y-12 -translate-x-12"></div>
         
         <div className="relative z-10">
           <div className="flex items-center justify-between">
@@ -1523,9 +1521,7 @@ const EntregadoresApp: React.FC = () => {
   const renderProfile = () => (
     <div className="space-y-6">
       {/* Header do perfil */}
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6 rounded-2xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-10 rounded-full translate-y-12 -translate-x-12"></div>
+      <div className="bg-gradient-to-r from-blue-300 to-blue-400 text-white p-6 rounded-2xl relative overflow-hidden">
         
         <div className="relative z-10">
           <div className="flex items-center space-x-4">
@@ -1580,22 +1576,22 @@ const EntregadoresApp: React.FC = () => {
       <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
         <h3 className="font-semibold text-gray-800 mb-3">Informações Pessoais</h3>
         <div className="space-y-3">
-          <div className="flex justify-between">
-            <span className="text-gray-600">Nome</span>
-            <span className="font-medium">{currentUser.name}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">E-mail</span>
-            <span className="font-medium">{currentUser.email}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Telefone</span>
-            <span className="font-medium">{currentUser.phone}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Veículo</span>
-            <span className="font-medium capitalize">{currentUser.vehicle}</span>
-          </div>
+            <div className="flex justify-between">
+              <span className="text-black font-medium">Nome</span>
+              <span className="font-semibold text-black">{currentUser.name}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-black font-medium">E-mail</span>
+              <span className="font-semibold text-black">{currentUser.email}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-black font-medium">Telefone</span>
+              <span className="font-semibold text-black">{currentUser.phone}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-black font-medium">Veículo</span>
+              <span className="font-semibold text-black capitalize">{currentUser.vehicle}</span>
+            </div>
           <button className="w-full mt-2 text-blue-600 text-sm font-medium hover:underline text-center">
             Editar informações
           </button>
@@ -1669,12 +1665,12 @@ const EntregadoresApp: React.FC = () => {
         <p className="mb-3 opacity-90">
           Conecte-se gratuitamente em todos os pontos de apoio e economize seus dados móveis!
         </p>
-        <div className="bg-white bg-opacity-20 p-3 rounded-lg">
-          <p className="font-mono text-sm">
-            <strong>Rede:</strong> DeliveryHub_Free<br />
-            <strong>Senha:</strong> entregador2025
-          </p>
-        </div>
+        <div className="bg-white bg-opacity-30 p-3 rounded-lg border border-white/20">
+            <p className="font-mono text-sm text-gray-900 font-semibold">
+              <strong>Rede:</strong> DeliveryHub_Free<br />
+              <strong>Senha:</strong> entregador2025
+            </p>
+          </div>
       </div>
 
       {/* Configurações */}
