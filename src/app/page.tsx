@@ -1263,7 +1263,7 @@ const EntregadoresApp: React.FC = () => {
         <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-xl">
           <div className="flex items-center space-x-2">
             <AlertCircle className="w-5 h-5 text-yellow-600" />
-            <p className="text-yellow-800">Primeiro selecione um ponto de apoio na aba "Mapa"</p>
+            <p className="text-yellow-800">Primeiro selecione um ponto de apoio na aba &quot;Mapa&quot;</p>
           </div>
           <button 
             onClick={() => setActiveTab('map')}
