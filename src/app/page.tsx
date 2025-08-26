@@ -611,11 +611,12 @@ const EntregadoresApp: React.FC = () => {
         {toast && <ToastComponent message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
         
         <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden">
-          <div className="bg-blue-400 p-6 text-white text-center">
-            <div className="bg-gradient-to-br from-white/30 to-white/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/20">
-              <MapPin className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="text-3xl font-bold mb-2">DeliveryHub</h1>
+          <div className="p-6 text-white text-center" style={{backgroundColor: '#04042c'}}>
+            <img 
+              src="/logo.png" 
+              alt="Amigos dos Motoboys"
+              className="w-50 h-50 mx-auto mb-4 rounded-full object-cover"
+            />
             <p className="opacity-90">Sua rede de apoio na estrada</p>
           </div>
 
@@ -683,7 +684,8 @@ const EntregadoresApp: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full text-white py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  style={{backgroundColor: '#04042c'}}
                 >
                   {isLoading ? <RotateCw className="w-5 h-5 animate-spin mr-2" /> : null}
                   {isLoading ? 'Entrando...' : 'Entrar'}
@@ -1723,7 +1725,7 @@ const EntregadoresApp: React.FC = () => {
         </p>
         <div className="bg-white bg-opacity-30 p-3 rounded-lg border border-white/20">
             <p className="font-mono text-sm text-gray-900 font-semibold">
-              <strong>Rede:</strong> DeliveryHub_Free<br />
+              <strong>Rede:</strong> AmigosMotoboys_Free<br />
               <strong>Senha:</strong> entregador2025
             </p>
           </div>
