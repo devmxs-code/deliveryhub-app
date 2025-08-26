@@ -16,6 +16,7 @@ O "Amigos dos Motoboys" é uma plataforma que visa melhorar a qualidade de vida 
 - 📱 **Interface responsiva** para dispositivos móveis
 - 🔔 **Sistema de notificações**
 - 📊 **Estatísticas de entregas**
+- 📲 **PWA (Progressive Web App)** - Instalável como app nativo
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -29,6 +30,11 @@ O "Amigos dos Motoboys" é uma plataforma que visa melhorar a qualidade de vida 
 - **Mapas:**
   - [Leaflet 1.9.4](https://leafletjs.com/) - Biblioteca de mapas
   - [React Leaflet 5.0.0](https://react-leaflet.js.org/) - Integração React
+
+- **PWA:**
+  - Web App Manifest - Configuração de instalação
+  - Service Worker - Funcionalidade offline
+  - Meta tags otimizadas para mobile
 
 - **Ferramentas de Desenvolvimento:**
   - [ESLint](https://eslint.org/) - Linter JavaScript/TypeScript
@@ -76,6 +82,62 @@ O "Amigos dos Motoboys" é uma plataforma que visa melhorar a qualidade de vida 
 - Relatórios de performance
 - Acompanhamento de metas
 
+## 📲 PWA - Progressive Web App
+
+A aplicação é configurada como PWA, oferecendo:
+
+### ✨ Recursos PWA
+- **Instalação nativa**: Pode ser instalada como app no dispositivo
+- **Funcionalidade offline**: Funciona mesmo sem conexão
+- **Ícone na tela inicial**: Acesso rápido como app nativo
+- **Tela cheia**: Experiência imersiva sem barra do navegador
+- **Notificações push**: Alertas importantes mesmo com app fechado
+
+### 📱 Como Instalar
+
+**No Android:**
+1. Abra o app no Chrome
+2. Toque no menu (3 pontos)
+3. Selecione "Adicionar à tela inicial"
+4. Confirme a instalação
+
+**No iOS:**
+1. Abra o app no Safari
+2. Toque no ícone de compartilhamento
+3. Selecione "Adicionar à Tela de Início"
+4. Confirme a instalação
+
+**No Desktop:**
+1. Abra o app no Chrome/Edge
+2. Clique no ícone de instalação na barra de endereços
+3. Confirme a instalação
+
+### 🔧 Configurações PWA
+- **Manifest**: `/public/manifest.json`
+- **Service Worker**: `/public/sw.js`
+- **Ícones**: Múltiplos tamanhos para diferentes dispositivos
+- **Tema**: Cor personalizada (#04042c)
+
+## 📱 Responsividade Mobile
+
+### 🎯 Design Mobile-First
+- Interface otimizada para telas pequenas
+- Navegação por gestos touch
+- Botões e elementos com tamanho adequado para dedos
+- Layout adaptativo para diferentes orientações
+
+### 📐 Breakpoints Responsivos
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+### 🔧 Otimizações Mobile
+- Viewport configurado para dispositivos móveis
+- Prevenção de zoom indesejado
+- Otimização de performance para conexões lentas
+- Imagens responsivas e otimizadas
+- Gestos de navegação intuitivos
+
 ## 🧪 Contas de Teste
 
 Para testar a aplicação, utilize uma das seguintes contas:
@@ -83,7 +145,6 @@ Para testar a aplicação, utilize uma das seguintes contas:
 - **Email:** marcos@email.com | **Senha:** qualquer senha
 - **Email:** joao@email.com | **Senha:** qualquer senha  
 - **Email:** juliana@email.com | **Senha:** qualquer senha
-
 
 ## 📱 Estrutura do Projeto
 
