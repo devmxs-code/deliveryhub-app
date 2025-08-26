@@ -650,7 +650,7 @@ const EntregadoresApp: React.FC = () => {
                       type="email"
                       value={loginData.email}
                       onChange={(e) => setLoginData({...loginData, email: e.target.value})}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                       placeholder="seu@email.com"
                       required
                     />
@@ -671,7 +671,7 @@ const EntregadoresApp: React.FC = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={loginData.password}
                       onChange={(e) => setLoginData({...loginData, password: e.target.value})}
-                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-600"
+                      className="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                       placeholder="••••••••"
                       required
                     />
@@ -847,10 +847,7 @@ const EntregadoresApp: React.FC = () => {
   const renderHome = () => (
     <div className="space-y-6">
       {/* Header com saudação */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white p-6 rounded-2xl relative overflow-hidden">
-  
-
-        
+      <div className="text-white p-6 rounded-2xl relative overflow-hidden" style={{backgroundColor: '#04042c'}}>
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
@@ -1394,8 +1391,7 @@ const EntregadoresApp: React.FC = () => {
 
   const renderRewards = () => (
     <div className="space-y-4">
-      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-2xl relative overflow-hidden">
-        
+      <div className="text-white p-6 rounded-2xl relative overflow-hidden" style={{backgroundColor: '#04042c'}}>        
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
@@ -1579,8 +1575,7 @@ const EntregadoresApp: React.FC = () => {
   const renderProfile = () => (
     <div className="space-y-6">
       {/* Header do perfil */}
-      <div className="bg-gradient-to-r from-blue-300 to-blue-400 text-white p-6 rounded-2xl relative overflow-hidden">
-        
+      <div className="text-white p-6 rounded-2xl relative overflow-hidden" style={{backgroundColor: '#04042c'}}>        
         <div className="relative z-10">
           <div className="flex items-center space-x-4">
             <div className="bg-white bg-opacity-20 p-3 rounded-full">
